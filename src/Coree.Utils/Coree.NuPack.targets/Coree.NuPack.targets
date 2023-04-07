@@ -1,0 +1,12 @@
+﻿<Project>
+
+	<Import Project="$(MSBuildProjectDirectory)\Coree.NuPack.props\NuPack.Constants.props"  Condition="Exists('$(MSBuildProjectDirectory)\Coree.NuPack.props\NuPack.Constants.props')"/>
+	<Import Project="$(MSBuildProjectDirectory)\Coree.NuPack.props\NuPack.Edit.props"  Condition="Exists('$(MSBuildProjectDirectory)\Coree.NuPack.props\NuPack.Edit.props')"/>
+	<Import Project="$(MSBuildProjectDirectory)\Coree.NuPack.props\NuPack.Secrets.props"  Condition="Exists('$(MSBuildProjectDirectory)\Coree.NuPack.props\NuPack.Secrets.props')"/>
+
+	<Import Project="$(MSBuildProjectDirectory)\Coree.NuPack.targets\Coree.NuPack.Values.props"  Condition="Exists('$(MSBuildProjectDirectory)\Coree.NuPack.targets\Coree.NuPack.Values.props')"/>
+	<Import Project="$(MSBuildProjectDirectory)\Coree.NuPack.targets\Coree.NuPack.BeforeTargets.BeforeBuild.targets"  Condition="Exists('$(MSBuildProjectDirectory)\Coree.NuPack.targets\Coree.NuPack.BeforeTargets.BeforeBuild.targets')"/>
+	<Import Project="$(MSBuildProjectDirectory)\Coree.NuPack.targets\Coree.NuPack.BeforeTargets.GenerateNuspec.targets"  Condition="Exists('$(MSBuildProjectDirectory)\Coree.NuPack.targets\Coree.NuPack.BeforeTargets.GenerateNuspec.targets')"/>
+	<Import Project="$(MSBuildProjectDirectory)\Coree.NuPack.targets\Coree.NuPack.AfterTargets.Pack.targets"  Condition="Exists('$(MSBuildProjectDirectory)\Coree.NuPack.targets\Coree.NuPack.AfterTargets.Pack.targets')"/>
+
+</Project>

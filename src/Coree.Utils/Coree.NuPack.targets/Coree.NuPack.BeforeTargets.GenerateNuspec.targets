@@ -1,0 +1,39 @@
+﻿<Project>
+
+  <Target Name="Coree-NuPack-BeforeTargets-GenerateNuspec-Start" BeforeTargets="GenerateNuspec">
+    <Message Text=" "  Importance="high" />
+    <Message Text="Coree-NuPack-BeforeTargets-GenerateNuspec" Importance="high" />
+    <Message Text="--------------------------------------------------------------------------------------"  Importance="high" />
+  </Target>
+
+  <Target Name="Coree-NuPack-BeforeTargets-GenerateNuspec-01" BeforeTargets="GenerateNuspec" Condition="'$(Coree-NuPack-PackageOutputAbsolutePath)'!=''">
+
+    <PropertyGroup>
+      <PackageOutputAbsolutePath>$(Coree-NuPack-PackageOutputAbsolutePath)</PackageOutputAbsolutePath>
+    </PropertyGroup>
+
+    <Message Text="PackageOutputAbsolutePath:  $(PackageOutputAbsolutePath)" Importance="high" />
+
+  </Target>
+
+  <Target Name="Coree-NuPack-BeforeTargets-GenerateNuspec-02" BeforeTargets="GenerateNuspec" Condition="'$(Coree-NuPack-UseVersionForPackage)'=='true'">
+
+    <PropertyGroup>
+      <Coree-NuPack-VersionPrefix>$(Coree-NuPack-VersionMajor).$(Coree-NuPack-VersionMinor).$(Coree-NuPack-VersionBuild).$(Coree-NuPack-VersionRevision)</Coree-NuPack-VersionPrefix>
+      <VersionPrefix Condition="'$(Coree-NuPack-VersionPrefix)'!=''">$(Coree-NuPack-VersionPrefix)</VersionPrefix>
+      <VersionSuffix Condition="'$(Coree-NuPack-VersionSuffix)'!=''">$(Coree-NuPack-VersionSuffix)</VersionSuffix>
+      <Coree-NuPack-PackageVersion>$(Coree-NuPack-VersionPrefix)$(Coree-NuPack-VersionSuffix)</Coree-NuPack-PackageVersion>
+      <PackageVersion Condition="'$(Coree-NuPack-PackageVersion)'!=''">$(Coree-NuPack-PackageVersion)</PackageVersion>
+    </PropertyGroup>
+
+    <Message Text="VersionPrefix:              $(VersionPrefix)" Importance="high" />
+    <Message Text="VersionSuffix:              $(VersionSuffix)" Importance="high" />
+    <Message Text="PackageVersion:             $(PackageVersion)" Importance="high" />
+
+  </Target>
+
+  <Target Name="Coree-NuPack-BeforeTargets-GenerateNuspec-End" BeforeTargets="GenerateNuspec">
+    <Message Text=" " Importance="high" />
+  </Target>
+
+</Project>

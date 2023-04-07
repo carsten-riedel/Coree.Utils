@@ -1,0 +1,20 @@
+﻿<Project>
+
+  <PropertyGroup Condition="'$(Coree-NuPack-AutoGenVersion)'=='true'">
+    <Coree-NuPack-VersionMajor Condition="'$(Coree-NuPack-VersionMajor)'==''">0</Coree-NuPack-VersionMajor>
+    <Coree-NuPack-VersionMinor Condition="'$(Coree-NuPack-VersionMinor)'==''">0</Coree-NuPack-VersionMinor>
+    <Coree-NuPack-VersionBuild Condition="'$(Coree-NuPack-VersionBuild)'==''">$([System.DateTime]::Now.ToString("yy").Substring(1,1))$([System.DateTime]::Now.ToString("MMdd"))</Coree-NuPack-VersionBuild>
+    <Coree-NuPack-VersionRevision Condition="'$(Coree-NuPack-VersionRevision)'==''">1$([System.DateTime]::Now.ToString("HHmm"))</Coree-NuPack-VersionRevision>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Coree-NuPack-PreReleaseFromConfiguration)'=='true'">
+    <Coree-NuPack-Configuration>$(Configuration)</Coree-NuPack-Configuration>
+    <Coree-NuPack-VersionSuffix Condition="'$(Configuration)'!='Release'">-$(Coree-NuPack-Configuration.ToLower())</Coree-NuPack-VersionSuffix>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Coree-NuPack-DefaultPackageOutputAbsolutePath)'=='true'">
+    <Coree-NuPack-PackageOutputAbsolutePath Condition="'$(Coree-NuPack-PackageOutputAbsolutePath)'==''">$(MSBuildProjectDirectory)\Coree.NuPack.Nupkg</Coree-NuPack-PackageOutputAbsolutePath>
+  </PropertyGroup>
+
+
+</Project>

@@ -1,0 +1,46 @@
+﻿<Project>
+
+  <!-- https://learn.microsoft.com/en-us/nuget/reference/msbuild-targets -->
+  <!-- https://learn.microsoft.com/en-us/cpp/build/reference/common-macros-for-build-commands-and-properties?view=msvc-170 -->
+  <!-- https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties?view=vs-2022 -->
+  <!-- https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props -->
+  <!-- https://github.com/NuGet/NuGet.Client/blob/4.3.0.4202/src/NuGet.Core/NuGet.Build.Tasks.Pack.Library/Pack.targets -->
+
+  <PropertyGroup>
+
+    <Coree-NuPack-VersionMajor>0</Coree-NuPack-VersionMajor>
+    <Coree-NuPack-VersionMinor>1</Coree-NuPack-VersionMinor>
+    
+    <Authors>Carsten Riedel</Authors>
+    <Copyright></Copyright>
+    <Company></Company>
+    <Description>
+      <![CDATA[
+Coree.Utils is a static function library that provides a collection of utility functions that can be used to simplify common tasks in software development
+	]]>
+    </Description>
+    <PackageTags>Coree;Utils;Static;library</PackageTags>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl></RepositoryUrl>
+    <RepositoryType></RepositoryType>
+    <RepositoryBranch></RepositoryBranch>
+
+    <!-- Uses Enviroment Username for <Authors> if <Authors> is not set. -->
+    <Coree-NuPack-AutoAuthors>true</Coree-NuPack-AutoAuthors>
+
+    <!-- Uses <Authors> for <Company> if <Company> is not set. -->
+    <Coree-NuPack-AutoCompany>true</Coree-NuPack-AutoCompany>
+
+    <!-- Uses <Company> for <Authors> if <Company> is set. -->
+    <Coree-NuPack-UseCompanyAuthors>true</Coree-NuPack-UseCompanyAuthors>
+
+    <!-- Uses <Company> for the <Copyright> if <Copyright> is not set and <Company> is set. Copyright © YYYY $(Company) -->
+    <Coree-NuPack-AutoCopyright>true</Coree-NuPack-AutoCopyright>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Coree-NuPack-CopyShares Include="C:\temp" />
+  </ItemGroup>
+
+</Project>

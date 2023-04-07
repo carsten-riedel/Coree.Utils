@@ -1,0 +1,21 @@
+<Project>
+  
+  <Import Project="$(MSBuildProjectDirectory)\Coree.NuPack.targets\Coree.NuPack.targets"  Condition="Exists('$(MSBuildProjectDirectory)\Coree.NuPack.targets\Coree.NuPack.targets')"/>
+ 
+	<ItemGroup>
+		<Compile Remove="Coree.NuPack.targets\**" />
+		<EmbeddedResource Remove="Coree.NuPack.targets\**" />
+		<None Remove="Coree.NuPack.targets\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="Coree.NuPack.nupkg\**" />
+		<EmbeddedResource Remove="Coree.NuPack.nupkg\**" />
+		<None Remove="Coree.NuPack.nupkg\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Coree.NuPack.props\.gitignore" />
+	</ItemGroup>
+
+</Project>

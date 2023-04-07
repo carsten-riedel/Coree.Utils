@@ -1,0 +1,28 @@
+﻿<Project>
+
+  <Target Name="Coree-NuPack-AfterTargets-Pack-Start" AfterTargets="Pack">
+    <Message Text=" "  Importance="high" />
+    <Message Text="Coree-NuPack-AfterTargets-Pack" Importance="high" />
+    <Message Text="--------------------------------------------------------------------------------------"  Importance="high" />
+  </Target>
+
+  <Target Name="Coree-NuPack-AfterTargets-Pack-Push-Test" AfterTargets="Pack" Condition="'$(Coree-NuPack-NugetApiKeyTest)'!='' AND '$(Coree-NuPack-PushOnPackIfKeyIsSet)'=='true'">
+    <Message Text="Pushing package to nugettest.org" Importance="high" />
+    <Exec Command="dotnet nuget push &quot;$(PackageOutputAbsolutePath)\$(PackageId).$(PackageVersion).nupkg&quot; -k $(Coree-NuPack-NugetApiKeyTest) -s https://apiint.nugettest.org/v3/index.json" />
+  </Target>
+
+  <Target Name="Coree-NuPack-AfterTargets-Pack-Push-Prod" AfterTargets="Pack" Condition="'$(Coree-NuPack-NugetApiKey)'!='' AND '$(Coree-NuPack-PushOnPackIfKeyIsSet)'=='true'">
+    <Message Text="Pushing package to nuget.org" Importance="high" />
+    <Exec Command="dotnet nuget push &quot;$(PackageOutputAbsolutePath)\$(PackageId).$(PackageVersion).nupkg&quot; -k $(Coree-NuPack-NugetApiKey) -s https://api.nuget.org/v3/index.json" />
+  </Target>
+
+  <Target Name="Coree-NuPack-AfterTargets-Pack-Copy" AfterTargets="Pack" Outputs="%(Coree-NuPack-CopyShares.Identity)" Condition="'@(Coree-NuPack-CopyShares->Count())' &gt;= 1">
+    <Message Text="Copy $(PackageOutputAbsolutePath)\$(PackageId).$(PackageVersion).nupkg to %(Coree-NuPack-CopyShares.Identity)" Importance="high" />
+    <Copy SourceFiles="$(PackageOutputAbsolutePath)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="@(Coree-NuPack-CopyShares)"  />
+  </Target>
+
+  <Target Name="Coree-NuPack-AfterTargets-Pack-End" AfterTargets="Pack">
+    <Message Text=" " Importance="high" />
+  </Target>
+
+</Project>

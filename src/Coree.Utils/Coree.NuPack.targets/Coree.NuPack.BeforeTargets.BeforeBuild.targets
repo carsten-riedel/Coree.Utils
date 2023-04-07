@@ -1,0 +1,48 @@
+﻿<Project>
+
+  <Target Name="Coree-NuPack-BeforeTargets-BeforeBuild-Start" BeforeTargets="BeforeBuild">
+    <Message Text=" "  Importance="high" />
+    <Message Text="Coree-NuPack-BeforeTargets-BeforeBuild" Importance="high" />
+    <Message Text="--------------------------------------------------------------------------------------"  Importance="high" />
+  </Target>
+
+  <Target Name="Coree-NuPack-BeforeTargets-BeforeBuild-01" BeforeTargets="BeforeBuild">
+
+    <PropertyGroup Condition="'$(Coree-NuPack-UseVersionForAssembly)'=='true'">
+      <Coree-NuPack-AssemblyVersion>$(Coree-NuPack-VersionMajor).$(Coree-NuPack-VersionMinor).$(Coree-NuPack-VersionBuild).$(Coree-NuPack-VersionRevision)</Coree-NuPack-AssemblyVersion>
+      <AssemblyVersion Condition="'$(Coree-NuPack-AssemblyVersion)'!=''">$(Coree-NuPack-AssemblyVersion)</AssemblyVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Coree-NuPack-UseVersionForFileVersion)'=='true'">
+      <Coree-NuPack-FileVersion>$(Coree-NuPack-VersionMajor).$(Coree-NuPack-VersionMinor).$(Coree-NuPack-VersionBuild).$(Coree-NuPack-VersionRevision)</Coree-NuPack-FileVersion>
+      <FileVersion Condition="'$(Coree-NuPack-AssemblyVersion)'!=''">$(Coree-NuPack-AssemblyVersion)</FileVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Coree-NuPack-UseVersionForInformationalVersion)'=='true'">
+      <Coree-NuPack-InformationalVersion>$(Coree-NuPack-VersionMajor).$(Coree-NuPack-VersionMinor).$(Coree-NuPack-VersionBuild).$(Coree-NuPack-VersionRevision)</Coree-NuPack-InformationalVersion>
+      <InformationalVersion Condition="'$(Coree-NuPack-InformationalVersion)'!=''">$(Coree-NuPack-InformationalVersion)</InformationalVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Coree-NuPack-AutoAuthors)'=='true'">
+      <Authors Condition="'$(Authors)'==''">$(USERNAME)</Authors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Coree-NuPack-AutoCompany)'=='true'">
+      <Company Condition="'$(Company)'==''">$(Authors)</Company>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Coree-NuPack-UseCompanyAuthors)'=='true'">
+      <Authors Condition="'$(Company)'!=''">$(Company)</Authors >
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Coree-NuPack-AutoCopyright)'=='true'">
+      <Copyright Condition="'$(Copyright)'=='' AND '$(Company)'!=''">Copyright © $([System.DateTime]::Now.ToString("yyyy")) $(Company)</Copyright>
+    </PropertyGroup>
+
+  </Target>
+
+  <Target Name="Coree-NuPack-BeforeTargets-BeforeBuild-End" BeforeTargets="BeforeBuild">
+    <Message Text=" "  Importance="high" />
+  </Target>
+
+</Project>
